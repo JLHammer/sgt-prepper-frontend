@@ -1,4 +1,5 @@
 # Partials
+
 Partials opbygger de semantiske tags af enkelte komponenter.
 De har lidt logik og begynder at danne UI-elementer med reel funktionalitet.
 
@@ -6,11 +7,12 @@ I denne løsning ligger de overordnede tags (header, nav, footer) i index.html o
 
 Eksempler:
 
-* Header
-* Navbar (Ul)
-* Footer
+- Header
+- Navbar (Ul)
+- Footer
 
 ## Placering:
+
 ```
 /js/views/partials/
 ```

@@ -6,19 +6,20 @@ De bruger modellerne til at hente, ændre eller gemme data og sender et svar til
 
 ## Eksempler:
 
-* productController.js håndterer visning af produkter
+- productController.js håndterer visning af produkter
 
-* cartController.js håndterer CRUD-funktioner for indkøbskurv
+- cartController.js håndterer CRUD-funktioner for indkøbskurv
 
 ## Typisk ansvar:
 
-* Modtage request og parametre
+- Modtage request og parametre
 
-* Kalde model-funktioner
+- Kalde model-funktioner
 
-* Returnere JSON-respons eller fejl
+- Returnere JSON-respons eller fejl
 
 ## Placering:
+
 ```
 /js/controllers/
 ```

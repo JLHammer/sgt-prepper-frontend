@@ -1,0 +1,41 @@
+{
+  "name": "sgt-prepper-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sgt. Prepper projekt af Jens L. Hammer",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint js --ext .js",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run build && npm run format:check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JLHammer/sgt-prepper-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/JLHammer/sgt-prepper-frontend/issues"
+  },
+  "homepage": "https://github.com/JLHammer/sgt-prepper-frontend#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.2.2",
+    "eslint": "^10.2.0",
+    "globals": "^17.5.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.2",
+    "vite": "^7.3.2"
+  },
+  "dependencies": {
+    "lucide": "^1.8.0"
+  }
+}
