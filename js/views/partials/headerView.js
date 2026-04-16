@@ -1,9 +1,10 @@
 import { Heading } from '../components/atoms/index.js'
+import { get, set } from '../../utils/index.js'
 
 const renderHeader = () => {
-  const header = document.querySelector('#header')
+  const header = get('#header')
   const h1 = Heading(1, 'Sgt. Prepper', 'text-2xl font-bold')
-  header.append(h1)
+  set(h1, header)
 }
 
 export default renderHeader

@@ -1,12 +1,12 @@
 import './style.css'
 import renderHeader from './views/partials/headerView.js'
-import renderNav from './views/partials/navView.js'
+import navController from './controllers/navController.js'
 import renderFooter from './views/partials/footerView.js'
 import { initRouter } from './router/router.js'
 
 const initApp = () => {
   renderHeader()
-  renderNav()
+  navController()
   renderFooter()
   initRouter()
 }

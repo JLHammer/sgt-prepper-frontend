@@ -1,5 +1,5 @@
 import { homeController } from '../controllers/homeController.js'
-import { clearMain } from '../utils/index.js'
+import { clearMain, create, get, set } from '../utils/index.js'
 
 export function initRouter() {
   window.addEventListener('hashchange', handleRoute)
@@ -18,6 +18,13 @@ function handleRoute() {
     return
   }
 
-  document.querySelector('#root').innerHTML =
-    `<h1 class="text-2xl font-bold">Side ikke fundet</h1>`
+  if (segments[0] === 'produkter') {
+    console.log('Product Controller')
+    return
+  }
+
+  const root = get('#root')
+  const notFound = create('h1', 'text-2xl font-bold')
+  notFound.innerText = 'Side ikke fundet'
+  set(notFound, root)
 }

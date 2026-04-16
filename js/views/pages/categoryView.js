@@ -1,11 +1,12 @@
 import { Paragraph } from '../components/atoms/index.js'
+import { get, set } from '../../utils/index.js'
 
 const categoryView = () => {
-  const app = document.querySelector('#root')
+  const app = get('#root')
 
   const p = Paragraph()
   p.innerText = 'Hej verden'
-  app.append(p)
+  set(p, app)
 }
 
 export default categoryView

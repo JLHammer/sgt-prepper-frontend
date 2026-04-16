@@ -1,5 +1,7 @@
+import { get, set } from '../../utils/index.js'
+
 const renderFooter = async () => {
-  const footer = document.querySelector('#footer')
+  const footer = get('#footer')
   footer.innerText = 'Footer'
 }
 
