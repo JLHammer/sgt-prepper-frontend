@@ -1,4 +1,5 @@
-import { homeController } from '../controllers/homeController.js'
+import homeController from '../controllers/homeController.js'
+import { productsController } from '../controllers/productsController.js'
 import { clearMain, create, get, set } from '../utils/index.js'
 
 export function initRouter() {
@@ -19,7 +20,11 @@ function handleRoute() {
   }
 
   if (segments[0] === 'produkter') {
-    console.log('Product Controller')
+    if (segments.length === 2) {
+      productsController(segments[1])
+      return
+    }
+    productsController()
     return
   }
 
