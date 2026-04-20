@@ -4,7 +4,7 @@
   "semi": false,
   "singleQuote": true,
   "printWidth": 80,
-  "tailwindStylesheet": "./js/style.css",
+  "tailwindStylesheet": "./style.css",
   "tailwindFunctions": ["create"],
   "plugins": ["prettier-plugin-tailwindcss"]
 }

@@ -1,8 +1,8 @@
 import { createElement, createIcons, icons } from 'lucide'
 
 /**
- * Create a Lucide SVG element from an icon name (kebab-case) or icon node.
- * Example name: 'shopping-cart'
+ * Create a Lucide SVG element from a PascalCase icon name or icon node.
+ * Example name: 'ShoppingCart'
  */
 export const createIcon = (icon, className = '', attrs = {}) => {
   const iconNode = typeof icon === 'string' ? icons[icon] : icon
