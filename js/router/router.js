@@ -1,13 +1,14 @@
 import homeController from '../controllers/homeController.js'
 import { productsController } from '../controllers/productsController.js'
-import { clearMain, create, get, set } from '../utils/index.js'
+import { clearMain, create, get, set } from '../utils/dom.js'
+import { renderIcons } from '../utils/icons.js'
 
 export function initRouter() {
   window.addEventListener('hashchange', handleRoute)
   window.addEventListener('load', handleRoute)
 }
 
-function handleRoute() {
+async function handleRoute() {
   clearMain()
 
   const hash = window.location.hash || '#/'
@@ -16,15 +17,18 @@ function handleRoute() {
 
   if (segments.length === 0) {
     homeController()
+    renderIcons()
     return
   }
 
   if (segments[0] === 'produkter') {
     if (segments.length === 2) {
-      productsController(segments[1])
+      await productsController(segments[1])
+      renderIcons()
       return
     }
-    productsController()
+    await productsController()
+    renderIcons()
     return
   }
 
@@ -32,4 +36,5 @@ function handleRoute() {
   const notFound = create('h1', 'text-2xl font-bold')
   notFound.innerText = 'Side ikke fundet'
   set(notFound, root)
+  renderIcons()
 }

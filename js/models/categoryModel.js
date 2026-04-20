@@ -1,4 +1,4 @@
-import { request } from '../utils/apiClient'
+import { request } from '../utils/http.js'
 
 export const getCategoryList = async () => {
   try {

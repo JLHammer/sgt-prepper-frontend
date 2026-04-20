@@ -1,4 +1,4 @@
-import { set } from '../../../utils/index.js'
+import { set } from '../../../utils/dom.js'
 import { Figure, Figcaption, Img } from '../atoms/index.js'
 
 export const Card = ({ name, imageUrl, teaser, price, stock, slug }) => {

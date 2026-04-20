@@ -1,4 +1,4 @@
-import { create } from '../../../utils/index.js'
+import { create } from '../../../utils/dom.js'
 
 // Paragraph Atom
 export const Paragraph = (innerText, className = '') => {

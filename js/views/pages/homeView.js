@@ -1,7 +1,7 @@
+import { get, set } from '../../utils/dom.js'
 import { Paragraph } from '../components/atoms/index.js'
-import { get, set } from '../../utils/index.js'
 
-const homeView = () => {
+const renderHomePage = () => {
   const app = get('#root')
 
   const p = Paragraph()
@@ -9,4 +9,4 @@ const homeView = () => {
   set(p, app)
 }
 
-export default homeView
+export default renderHomePage

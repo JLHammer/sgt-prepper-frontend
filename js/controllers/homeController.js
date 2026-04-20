@@ -1,7 +1,7 @@
-import homeView from '../views/pages/homeView.js'
+import renderHomePage from '../views/pages/homeView.js'
 
 function homeController() {
-  homeView()
+  renderHomePage()
 }
 
 export default homeController

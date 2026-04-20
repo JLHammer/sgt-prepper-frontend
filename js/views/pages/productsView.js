@@ -1,8 +1,8 @@
-import { get, set } from '../../utils/index.js'
+import { get, set } from '../../utils/dom.js'
 import { Heading, Div } from '../components/atoms/index.js'
 import { Card } from '../components/molecules/card.js'
 
-const productsView = (products) => {
+const renderProductsPage = (products) => {
   const root = get('#root')
   const div = Div()
   const h1 = Heading(1, 'Produkter', 'text-2xl font-bold')
@@ -17,4 +17,4 @@ const productsView = (products) => {
   })
 }
 
-export default productsView
+export default renderProductsPage

@@ -1,4 +1,4 @@
-import { request } from '../utils/apiClient.js'
+import { request } from '../utils/http.js'
 
 const url = 'http://localhost:4000/api/products'
 

@@ -1,20 +1,7 @@
-// Utility fil med forskellige hjælpefunktioner
-
-/**
- * Funktion til at slette indhold i root element
- */
+// Function to clear the main content of the main content
 export const clearMain = () => {
   const app = document.querySelector('#root')
   app.innerHTML = ''
-}
-
-// Funktion til at formatere pris i DKK
-export const price2Dkk = (value) => {
-  return new Intl.NumberFormat('da-DK', {
-    style: 'currency',
-    currency: 'DKK',
-    currencyDisplay: 'code',
-  }).format(value)
 }
 
 // Function til at lave et element med klasser

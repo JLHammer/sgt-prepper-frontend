@@ -1,10 +1,10 @@
-import { get, set } from '../../utils/index.js'
+import { get, set } from '../../utils/dom.js'
 import { Li, Ul, Link } from '../components/atoms/index.js'
 
 const renderNav = async (data) => {
   const nav = get('#nav')
 
-  const ul = Ul()
+  const ul = Ul('flex')
 
   data.map((item) => {
     const li = Li('', 'mr-6')
