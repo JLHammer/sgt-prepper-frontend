@@ -1,5 +1,5 @@
 import { getProduct } from '../models/productModel.js'
-import { price2Dkk } from '../utils/index.js'
+import { price2Dkk } from '../utils/formatters.js'
 import renderProductPage from '../views/pages/productView.js'
 
 export const productController = async (product_slug) => {

@@ -70,9 +70,11 @@ export const Img = (src = '', alt = '', className = '') => {
 }
 
 // Button atom
-export const Button = (innerText = '', className = '') => {
+export const Button = (text = '', className = '', onClick, type = 'button') => {
   const button = create('button', className)
-  button.innerText = innerText
+  button.innerText = text
+  button.type = type
+  if (onClick) button.addEventListener('click', onClick)
   return button
 }
 
@@ -87,4 +89,28 @@ export const Figcaption = (innerText = '', className = '') => {
   const figcaption = create('figcaption', className)
   figcaption.innerText = innerText
   return figcaption
+}
+
+// Form atom
+export const Form = (className = '', onSubmit) => {
+  const form = create('form', className)
+  if (onSubmit) form.addEventListener('submit', onSubmit)
+  return form
+}
+
+// Input atom
+export const Input = (type = 'text', name = '', value = '', className = '') => {
+  const input = create('input', className)
+  input.type = type
+  input.name = name
+  input.value = value
+  return input
+}
+
+// Label atom
+export const Label = (innerText = '', htmlFor = '', className = '') => {
+  const label = create('label', className)
+  label.innerText = innerText
+  label.htmlFor = htmlFor
+  return label
 }

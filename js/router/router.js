@@ -1,4 +1,5 @@
 import homeController from '../controllers/homeController.js'
+import { productController } from '../controllers/productController.js'
 import { productsController } from '../controllers/productsController.js'
 import { clearMain, create, get, set } from '../utils/dom.js'
 import { renderIcons } from '../utils/icons.js'
@@ -28,6 +29,12 @@ async function handleRoute() {
       return
     }
     await productsController()
+    renderIcons()
+    return
+  }
+
+  if (segments[0] === 'produkt' && segments.length === 2) {
+    await productController(segments[1])
     renderIcons()
     return
   }

@@ -1,12 +1,85 @@
 @import 'tailwindcss';
 
 @theme {
+  --color-login-button: #a3b4cc;
 }
 
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+  }
+
+  h1 {
+    @apply text-2xl font-bold md:text-4xl;
+  }
+  h2 {
+    @apply text-xl font-bold md:text-3xl;
+  }
+  h3 {
+    @apply text-lg font-semibold md:text-2xl;
+  }
+  h4 {
+    @apply text-base font-semibold md:text-xl;
+  }
+  h5 {
+    @apply text-sm font-medium md:text-lg;
+  }
+  h6 {
+    @apply text-xs font-medium md:text-base;
+  }
+
+  a {
+    @apply text-white;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
 }
 
 @layer components {
+  #nav {
+    @apply flex p-3;
+  }
+
+  .heading-1 {
+    @apply hidden h-full text-2xl font-bold md:flex;
+  }
+
+  .logo-container {
+    @apply flex h-full items-center justify-center gap-2;
+  }
+
+  .login-button {
+    @apply rounded-full bg-login-button px-3;
+  }
+
+  .basket-login-container {
+    @apply flex gap-3;
+  }
+
+  .basket-button {
+    @apply relative px-2;
+  }
+
+  .basket-count {
+    @apply absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white;
+  }
+
+  .main-container {
+    @apply flex flex-col p-2;
+  }
+
+  .hero-image {
+    @apply h-38 w-full object-cover md:h-full;
+  }
+
+  .footer-image {
+    @apply h-auto w-full;
+  }
 }
 
 @layer utilities {

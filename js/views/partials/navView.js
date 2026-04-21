@@ -1,13 +1,13 @@
-import { get, set } from '../../utils/dom.js'
-import { Li, Ul, Link } from '../components/atoms/index.js'
+import { create, get, set } from '../../utils/dom.js'
+import { Li, Ul, Link, Button } from '../components/atoms/index.js'
 import { createIcon } from '../../utils/icons.js'
 
 const CATEGORY_ICON_BY_SLUG = {
   'vand-og-vandrensning': 'Droplet',
-  'mad-og-langtidsopbevaring': 'UtensilsCrossed',
-  'energi-og-belysning': 'Lightbulb',
-  'forstehjaelp-og-sundhed': 'HeartPulse',
-  'kommunikation-og-navigation': 'Compass',
+  'mad-og-langtidsopbevaring': 'Hamburger',
+  'energi-og-belysning': 'Zap',
+  'forstehjaelp-og-sundhed': 'Cross',
+  'kommunikation-og-navigation': 'Nfc',
 }
 
 const getCategoryIconName = (item) => {
@@ -17,18 +17,23 @@ const getCategoryIconName = (item) => {
 
 const renderNav = async (data) => {
   const nav = get('#nav')
+  nav.classList.add('gap-2')
   nav.innerHTML = ''
 
-  const mobileWrapper = document.createElement('div')
-  mobileWrapper.className = 'relative inline-block md:hidden'
+  const backArrowIcon = createIcon('ArrowLeft', 'text-white')
+  const backArrowButton = Button('')
+  set(backArrowIcon, backArrowButton)
 
-  const toggleButton = document.createElement('button')
+  const mobileWrapper = create('div', 'relative inline-block md:hidden')
+
+  const toggleButton = create(
+    'button',
+    'flex items-center gap-2 rounded bg-slate-600 px-3 py-2 text-white hover:bg-slate-700',
+  )
   toggleButton.type = 'button'
-  toggleButton.className =
-    'flex items-center gap-2 rounded bg-slate-600 px-3 py-2 text-white hover:bg-slate-700'
 
   const menuIcon = createIcon('Menu')
-  const menuLabel = document.createElement('span')
+  const menuLabel = create('span')
   menuLabel.innerText = 'Categories'
   set(menuIcon, toggleButton)
   set(menuLabel, toggleButton)
@@ -52,7 +57,7 @@ const renderNav = async (data) => {
     mobileLink.setAttribute('role', 'menuitem')
 
     const mobileIcon = createIcon(getCategoryIconName(item))
-    const mobileText = document.createElement('span')
+    const mobileText = create('span')
     mobileText.innerText = item.title
 
     set(mobileIcon, mobileLink)
@@ -65,11 +70,11 @@ const renderNav = async (data) => {
     const desktopLink = Link(
       `/index.html#/produkter/${item.slug}`,
       '',
-      'flex items-center gap-2 text-blue-500 hover:text-blue-700',
+      'flex items-center gap-2',
     )
 
     const desktopIcon = createIcon(getCategoryIconName(item))
-    const desktopText = document.createElement('span')
+    const desktopText = create('span')
     desktopText.innerText = item.title
 
     set(desktopIcon, desktopLink)
@@ -105,8 +110,7 @@ const renderNav = async (data) => {
 
   set(toggleButton, mobileWrapper)
   set(mobileMenu, mobileWrapper)
-  set(mobileWrapper, nav)
-  set(desktopMenu, nav)
+  set([backArrowButton, mobileWrapper, desktopMenu], nav)
 }
 
 export default renderNav

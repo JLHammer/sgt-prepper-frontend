@@ -1,23 +1,28 @@
 import { get, set } from '../../utils/dom.js'
-import { Img, Heading, Button } from '../components/atoms/index.js'
+import { Img, Heading, Button, Div, Span } from '../components/atoms/index.js'
+
+const count = '0' // PLACEHOLDER - Should be based on actual basket content
 
 export const renderHeader = () => {
   const header = get('#header')
-  header.classList.add(
-    'flex',
-    'justify-center',
-    'items-center',
-    'md:justify-start',
-    'gap-2',
-  )
+  header.classList.add('flex', 'justify-between', 'items-center')
 
-  const logo = Img('../../../public/images/logo.svg', 'Sgt. Prepper logo')
-  const h1 = Heading(1, 'Sgt. Prepper', 'text-2xl font-bold')
-  const loginButton = Button('Log ind')
-  const basketWrapper = Button('')
-  const basket = Img('../../../public/images/basket.svg', 'Indkøbskurv')
-  set(basket, basketWrapper)
-  set([logo, h1, loginButton, basketWrapper], header)
+  const logo = Img('/images/logo.svg', 'Sgt. Prepper logo')
+  const h1 = Heading(1, 'Sgt. Prepper', 'heading-1')
+  const loginButton = Button('Log ind', 'login-button', () => {})
+  const basketWrapper = Button('', 'basket-button', () => {})
+  const basketIcon = Img('/images/basket.svg', 'Indkøbskurv')
 
+  const basketCountWrapper = Div('basket-count')
+  const basketCount = Span(`${count}`, 'text-xs text-white w-full ')
+  set(basketCount, basketCountWrapper)
 
+  const logoContainer = Div('logo-container')
+  set([logo, h1], logoContainer)
+
+  const basketLoginContainer = Div('basket-login-container')
+  set([loginButton, basketWrapper], basketLoginContainer)
+
+  set([basketIcon, basketCountWrapper], basketWrapper)
+  set([logoContainer, basketLoginContainer], header)
 }
