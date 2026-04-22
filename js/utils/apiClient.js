@@ -1,3 +1,4 @@
+// API client function to make HTTP requests
 export const request = async (url, method = 'GET', body) => {
   if (!url) throw new Error('Missing url')
 

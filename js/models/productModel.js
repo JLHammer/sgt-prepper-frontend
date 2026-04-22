@@ -3,6 +3,7 @@ import { request } from '../utils/http.js'
 const url = 'http://localhost:4000/api/products'
 const apiOrigin = new URL(url).origin
 
+// Normalize image URL to ensure it is absolute
 const normalizeImageUrl = (product) => {
   if (!product?.imageUrl) return product
 

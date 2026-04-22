@@ -1,20 +1,29 @@
-// Function to clear the main content of the main content
+// Clear main content
 export const clearMain = () => {
   const app = document.querySelector('#root')
   app.innerHTML = ''
 }
 
-// Function til at lave et element med klasser
+// Format price in DKK
+export const price2Dkk = (value) => {
+  return new Intl.NumberFormat('da-DK', {
+    style: 'currency',
+    currency: 'DKK',
+    currencyDisplay: 'code',
+  }).format(value)
+}
+
+// Create an element with classes
 export const create = (el, classes) => {
   const element = document.createElement(el)
   if (classes) element.className = classes
   return element
 }
 
-// Funktion til at hente et element fra DOM'en
+// Get an element from the DOM
 export const get = (target) => document.querySelector(target)
 
-// Funktion til at sætte et eller flere element(er) i DOM'en
+// Set one or more elements in the DOM
 export const set = (element, target) => {
   if (Array.isArray(element)) {
     element.forEach((el) => target.appendChild(el))

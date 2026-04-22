@@ -14,7 +14,7 @@ export const renderHeader = () => {
   const basketIcon = Img('/images/basket.svg', 'Indkøbskurv')
 
   const basketCountWrapper = Div('basket-count')
-  const basketCount = Span(`${count}`, 'text-xs text-white w-full ')
+  const basketCount = Span(`${count}`, 'w-full text-xs text-white')
   set(basketCount, basketCountWrapper)
 
   const logoContainer = Div('logo-container')

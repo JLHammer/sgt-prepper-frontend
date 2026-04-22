@@ -4,11 +4,13 @@ import { productsController } from '../controllers/productsController.js'
 import { clearMain, create, get, set } from '../utils/dom.js'
 import { renderIcons } from '../utils/icons.js'
 
+// Initialize router
 export function initRouter() {
   window.addEventListener('hashchange', handleRoute)
   window.addEventListener('load', handleRoute)
 }
 
+// Handle routing
 async function handleRoute() {
   clearMain()
 
@@ -16,12 +18,14 @@ async function handleRoute() {
   const cleanHash = hash.replace(/^#\/?/, '')
   const segments = cleanHash.split('/').filter(Boolean)
 
+  // Route for home page
   if (segments.length === 0) {
-    homeController()
+    await homeController()
     renderIcons()
     return
   }
 
+  // Route for products page
   if (segments[0] === 'produkter') {
     if (segments.length === 2) {
       await productsController(segments[1])

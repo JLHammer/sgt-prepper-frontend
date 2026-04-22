@@ -41,8 +41,18 @@
 }
 
 @layer components {
+  #header {
+    @apply flex items-center justify-between bg-slate-700 p-3 text-white;
+  }
+
   #nav {
-    @apply flex p-3;
+    @apply flex bg-slate-400 p-3;
+  }
+
+  #root {
+  }
+
+  #footer {
   }
 
   .heading-1 {

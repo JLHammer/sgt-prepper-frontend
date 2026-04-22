@@ -9,6 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint js --ext .js",
     "lint:fix": "eslint . --fix",
+    "sync:tailwind-functions": "node scripts/sync-tailwind-functions.mjs",
+    "format:sync": "npm run sync:tailwind-functions && prettier --write .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run lint && npm run build && npm run format:check"

@@ -8,7 +8,7 @@ import {
 } from '../components/atoms/index.js'
 
 const renderHomePage = () => {
-  const app = get('#root')
+  const root = get('#root')
   const homePageContainer = Section('home-page-container')
 
   const hero = Img('/images/hero.svg', 'Hero image', 'hero-image')
@@ -23,13 +23,13 @@ const renderHomePage = () => {
 
   const paragraphContainer = Div('paragraph-container flex flex-col gap-2')
   const welcomeContainer = Section(
-    'welcome-container flex flex-col gap-1 rounded-2xl border border-gray-300 p-2 bg-white m-2',
+    'welcome-container m-2 flex flex-col gap-1 rounded-2xl border border-gray-300 bg-white p-2',
   )
 
   set([p1, p2], paragraphContainer)
   set([h2, paragraphContainer], welcomeContainer)
   set([hero, welcomeContainer], homePageContainer)
-  set(homePageContainer, app)
+  set(homePageContainer, root)
 }
 
 export default renderHomePage

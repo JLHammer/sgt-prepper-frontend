@@ -3,12 +3,12 @@ import { Section, Heading } from '../components/atoms/index.js'
 import { Card } from '../components/molecules/card.js'
 
 const renderProductPage = (product) => {
+  const root = get('#root')
   const productPageContainer = Section('product-page-container main-container')
 
   const { name } = product
-  const root = get('#root')
 
-  const h1 = Heading(1, name, 'text-3xl font-bold mb-4')
+  const h1 = Heading(1, name, 'mb-4 text-3xl font-bold')
   set(h1, productPageContainer)
 
   const productCard = Card(product)

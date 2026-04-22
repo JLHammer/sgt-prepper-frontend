@@ -7,9 +7,7 @@ const renderProductsPage = (products) => {
   const productsPageContainer = Section(
     'products-page-container main-container',
   )
-  const div = Div(
-    'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2',
-  )
+  const div = Div('flex flex-col gap-2 rounded-2xl')
   const h1 = Heading(1, 'Produkter', 'text-2xl font-bold')
   set([h1, div], productsPageContainer)
   set(productsPageContainer, root)

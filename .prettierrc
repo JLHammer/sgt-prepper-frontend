@@ -5,6 +5,25 @@
   "singleQuote": true,
   "printWidth": 80,
   "tailwindStylesheet": "./style.css",
-  "tailwindFunctions": ["create"],
+  "tailwindFunctions": [
+    "Article",
+    "Aside",
+    "Button",
+    "Div",
+    "Figcaption",
+    "Figure",
+    "Form",
+    "Heading",
+    "Img",
+    "Input",
+    "Label",
+    "Li",
+    "Link",
+    "Paragraph",
+    "Section",
+    "Span",
+    "Ul",
+    "create"
+  ],
   "plugins": ["prettier-plugin-tailwindcss"]
 }

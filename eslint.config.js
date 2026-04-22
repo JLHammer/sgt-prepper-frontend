@@ -22,8 +22,20 @@ export default [
       globals: globals.browser,
     },
   },
+  {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.node,
+    },
+    rules: {
+      'no-console': 'off',
+    },
+  },
   js.configs.recommended,
   {
+    files: ['**/*.js'],
     rules: {
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-console': 'warn',
