@@ -1,5 +1,5 @@
 import { create, get, set } from '../../utils/dom.js'
-import { Li, Ul, Link, Button } from '../components/atoms/index.js'
+import { Li, Ul, Link } from '../components/atoms/index.js'
 import { createIcon } from '../../utils/icons.js'
 
 const CATEGORY_ICON_BY_SLUG = {
@@ -19,10 +19,6 @@ const renderNav = async (data) => {
   const nav = get('#nav')
   nav.classList.add('gap-2')
   nav.innerHTML = ''
-
-  const backArrowIcon = createIcon('ArrowLeft', 'text-white')
-  const backArrowButton = Button('')
-  set(backArrowIcon, backArrowButton)
 
   const mobileWrapper = create('div', 'relative inline-block md:hidden')
 
@@ -110,7 +106,7 @@ const renderNav = async (data) => {
 
   set(toggleButton, mobileWrapper)
   set(mobileMenu, mobileWrapper)
-  set([backArrowButton, mobileWrapper, desktopMenu], nav)
+  set([mobileWrapper, desktopMenu], nav)
 }
 
 export default renderNav

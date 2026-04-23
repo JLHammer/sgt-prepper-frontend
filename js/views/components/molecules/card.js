@@ -2,7 +2,9 @@ import { set } from '../../../utils/dom.js'
 import { Figure, Figcaption, Img, Div, Paragraph } from '../atoms/index.js'
 
 export const Card = ({ name, imageUrl, teaser, price, stock, slug }) => {
-  const card = Figure('overflow-hidden rounded-lg border p-4 shadow-md')
+  const card = Figure(
+    'flex flex-col overflow-hidden rounded-lg p-4 shadow-md md:flex-row',
+  )
   const imgWrapper = Div('product-image-wrapper overflow-hidden')
   const img = Img(imageUrl, name, 'h-48 w-full object-cover')
   const figcaption = Figcaption(

@@ -1,7 +1,7 @@
 import { get, set } from '../../utils/dom.js'
 import { Img, Heading, Button, Div, Span } from '../components/atoms/index.js'
 
-const count = '0' // PLACEHOLDER - Should be based on actual basket content
+const count = '0' // PLACEHOLDER - Should be based on actual cart content
 
 export const renderHeader = () => {
   const header = get('#header')
@@ -10,19 +10,19 @@ export const renderHeader = () => {
   const logo = Img('/images/logo.svg', 'Sgt. Prepper logo')
   const h1 = Heading(1, 'Sgt. Prepper', 'heading-1')
   const loginButton = Button('Log ind', 'login-button', () => {})
-  const basketWrapper = Button('', 'basket-button', () => {})
-  const basketIcon = Img('/images/basket.svg', 'Indkøbskurv')
+  const cartWrapper = Button('', 'cart-button', () => {})
+  const cartIcon = Img('/images/cart.svg', 'Cart')
 
-  const basketCountWrapper = Div('basket-count')
-  const basketCount = Span(`${count}`, 'w-full text-xs text-white')
-  set(basketCount, basketCountWrapper)
+  const cartCountWrapper = Div('cart-count')
+  const cartCount = Span(`${count}`, 'w-full text-xs text-white')
+  set(cartCount, cartCountWrapper)
 
   const logoContainer = Div('logo-container')
   set([logo, h1], logoContainer)
 
-  const basketLoginContainer = Div('basket-login-container')
-  set([loginButton, basketWrapper], basketLoginContainer)
+  const cartLoginContainer = Div('cart-login-container')
+  set([loginButton, cartWrapper], cartLoginContainer)
 
-  set([basketIcon, basketCountWrapper], basketWrapper)
-  set([logoContainer, basketLoginContainer], header)
+  set([cartIcon, cartCountWrapper], cartWrapper)
+  set([logoContainer, cartLoginContainer], header)
 }
