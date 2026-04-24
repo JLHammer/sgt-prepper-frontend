@@ -1,30 +1,24 @@
 import { set } from '../../../utils/dom.js'
 import { Figure, Figcaption, Img, Div, Paragraph } from '../atoms/index.js'
 
-export const Card = ({ name, imageUrl, teaser, price, stock, slug }) => {
-  const card = Figure(
-    'flex flex-col overflow-hidden rounded-lg p-4 shadow-md md:flex-row',
-  )
-  const imgWrapper = Div('product-image-wrapper overflow-hidden')
-  const img = Img(imageUrl, name, 'h-48 w-full object-cover')
-  const figcaption = Figcaption(
-    name,
-    'product-content-wrapper text-lg font-semibold',
-  )
-  const teaserParagraph = Paragraph(teaser, 'mb-2 text-gray-600')
+export const Card = (props) => {
+  const { name, imageUrl, teaser, price, stock, slug } = props
+  const card = Figure('card product-detail-card')
+  const imgWrapper = Div('card-image-wrapper')
+  const img = Img(imageUrl, name, 'card-image')
+  const figcaption = Figcaption(name, 'card-caption')
+  const teaserParagraph = Paragraph(teaser, 'text-gray-600')
   const priceParagraph = Paragraph(
     `Pris: ${price} DKK`,
-    'font-bold text-gray-800',
+    'text-2xl font-bold text-gray-800',
   )
   const stockParagraph = Paragraph(
-    `Lagerstatus: ${stock > 0 ? 'På lager' : 'Udsolgt'}`,
-    `mb-4 ${stock > 0 ? 'text-green-600' : 'text-red-600'}`,
+    `${stock > 0 ? 'På lager' : 'Udsolgt'}`,
+    `text-lg ${stock > 0 ? 'text-green-600' : 'text-red-600'}`,
   )
-
   set(img, imgWrapper)
   set(imgWrapper, card)
   set([teaserParagraph, priceParagraph, stockParagraph], figcaption)
   set(figcaption, card)
-
   return card
 }

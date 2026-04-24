@@ -20,7 +20,7 @@ const renderProductPage = (product) => {
 
   const { name } = product
 
-  const h1 = Heading(1, name, 'mb-4 text-3xl font-bold')
+  const h1 = Heading(1, name, 'text-3xl font-bold')
   set(backArrowIcon, backButton)
 
   const productCard = Card(product)

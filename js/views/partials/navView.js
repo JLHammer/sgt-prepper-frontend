@@ -17,7 +17,6 @@ const getCategoryIconName = (item) => {
 
 const renderNav = async (data) => {
   const nav = get('#nav')
-  nav.classList.add('gap-2')
   nav.innerHTML = ''
 
   const mobileWrapper = create('div', 'relative inline-block md:hidden')

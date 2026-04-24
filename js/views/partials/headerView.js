@@ -5,7 +5,6 @@ const count = '0' // PLACEHOLDER - Should be based on actual cart content
 
 export const renderHeader = () => {
   const header = get('#header')
-  header.classList.add('flex', 'justify-between', 'items-center')
 
   const logo = Img('/images/logo.svg', 'Sgt. Prepper logo')
   const h1 = Heading(1, 'Sgt. Prepper', 'heading-1')

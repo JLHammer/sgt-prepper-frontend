@@ -85,9 +85,8 @@ export const Figure = (className = '') => {
 }
 
 // Figcaption atom
-export const Figcaption = (innerText = '', className = '') => {
+export const Figcaption = (className = '') => {
   const figcaption = create('figcaption', className)
-  figcaption.innerText = innerText
   return figcaption
 }
 
@@ -113,4 +112,9 @@ export const Label = (innerText = '', htmlFor = '', className = '') => {
   label.innerText = innerText
   label.htmlFor = htmlFor
   return label
+}
+
+// Hr atom
+export const Hr = (className = '') => {
+  return create('hr', className)
 }

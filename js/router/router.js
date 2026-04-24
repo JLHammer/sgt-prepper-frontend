@@ -3,7 +3,6 @@ import { checkoutController } from '../controllers/checkoutController.js'
 import { cartController } from '../controllers/cartController.js'
 import { loginController } from '../controllers/loginController.js'
 import { productController } from '../controllers/productController.js'
-import { productsController } from '../controllers/productsController.js'
 import { clearMain, create, get, set } from '../utils/dom.js'
 import { renderIcons } from '../utils/icons.js'
 
@@ -38,24 +37,15 @@ async function handleRoute() {
   // Route for category page
   if (segments[0] === 'produkter') {
     if (segments.length === 2) {
-      await productsController(segments[1])
+      await productController(undefined, segments[1])
       renderIcons()
       return
     }
-    await productsController()
-    renderIcons()
-    return
   }
 
   // Route for product detail page
   if (segments[0] === 'produkt' && segments.length === 3) {
     await productController(segments[2], segments[1])
-    renderIcons()
-    return
-  }
-
-  if (segments[0] === 'produkt' && segments.length === 2) {
-    await productController(segments[1])
     renderIcons()
     return
   }

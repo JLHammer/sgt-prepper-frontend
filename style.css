@@ -14,6 +14,7 @@
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
       url('/images/background.png');
+    @apply flex min-h-screen flex-col;
     @apply bg-cover bg-fixed bg-center bg-no-repeat;
   }
 
@@ -51,13 +52,15 @@
   }
 
   #nav {
-    @apply flex bg-slate-400 p-3;
+    @apply flex gap-2 bg-slate-400 p-3;
   }
 
   #root {
+    @apply flex-1;
   }
 
   #footer {
+    @apply mt-10 w-full;
   }
 
   .heading-1 {
@@ -85,13 +88,59 @@
   }
 
   .main-container {
-    @apply flex flex-col p-2;
+    @apply m-2 flex flex-col items-center p-2;
   }
 
   .hero-image {
     @apply h-38 w-full object-cover md:h-full;
   }
 
+  .products-container {
+    @apply flex flex-col gap-4 shadow-none sm:w-9/10 md:gap-0 md:shadow-xl lg:w-fit lg:items-center;
+  }
+
+  /* CARDS */
+  .card {
+    @apply flex w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white p-6 text-black shadow-lg sm:gap-6 md:shadow-none;
+  }
+
+  /* Product card */
+  .product-detail-card {
+  }
+
+  /* List card */
+  .product-list-card {
+    @apply h-64 md:flex-row md:rounded-none;
+  }
+
+  /* Image wrapper */
+  .card-image-wrapper {
+    @apply flex w-full items-center sm:w-auto;
+  }
+
+  /* Image */
+  .card-image {
+    @apply aspect-square h-auto w-full rounded-lg object-cover sm:w-auto md:h-48;
+  }
+
+  /* Figcaption */
+  .card-caption {
+    @apply flex h-full w-fit flex-1 flex-col gap-4 text-xl;
+  }
+
+  .product-list-card .card-caption {
+    @apply h-full flex-row gap-5;
+  }
+
+  .description-review-container {
+    @apply flex flex-col;
+  }
+
+  .stock-price-container {
+    @apply flex flex-col justify-end;
+  }
+
+  /* FOOTER */
   .footer-image {
     @apply h-auto w-full;
   }
