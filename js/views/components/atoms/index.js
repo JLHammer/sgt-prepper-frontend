@@ -121,3 +121,9 @@ export const Label = (innerText = '', htmlFor = '', className = '') => {
 export const Hr = (className = '') => {
   return create('hr', className)
 }
+
+// Address atom
+export const Address = (className = '') => {
+  const address = create('address', className)
+  return address
+}

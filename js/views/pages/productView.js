@@ -12,8 +12,8 @@ const renderProductPage = (product) => {
     'inline-flex aspect-square items-center self-start rounded-xl bg-white p-2 shadow-md',
     () => {
       window.location.hash = categorySlug
-        ? `#/produkter/${categorySlug}`
-        : '#/produkter'
+        ? `#/produkter/${categorySlug}/`
+        : '#/produkter/'
     },
   )
   const backArrowIcon = createIcon('ChevronLeft', 'text-black')

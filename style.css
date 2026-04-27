@@ -61,6 +61,10 @@
 
   #footer {
     @apply mt-10 w-full;
+
+    & .address-container {
+      @apply flex flex-col bg-[#334156] not-italic;
+    }
   }
 
   .heading-1 {
