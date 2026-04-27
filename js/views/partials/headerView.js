@@ -1,10 +1,17 @@
 import { get, set } from '../../utils/dom.js'
-import { Img, Heading, Button, Div, Span } from '../components/atoms/index.js'
+import {
+  Img,
+  Heading,
+  Button,
+  Div,
+  Span,
+  createFragment,
+} from '../components/atoms/index.js'
 
 const count = '0' // PLACEHOLDER - Should be based on actual cart content
 
-export const renderHeader = () => {
-  const header = get('#header')
+export const createHeader = () => {
+  const header = createFragment()
 
   const logo = Img('/images/logo.svg', 'Sgt. Prepper logo')
   const h1 = Heading(1, 'Sgt. Prepper', 'heading-1')
@@ -24,4 +31,6 @@ export const renderHeader = () => {
 
   set([cartIcon, cartCountWrapper], cartWrapper)
   set([logoContainer, cartLoginContainer], header)
+
+  return header
 }

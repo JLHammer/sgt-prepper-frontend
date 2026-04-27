@@ -1,15 +1,15 @@
 import '../style.css'
-import { renderHeader } from './views/partials/headerView.js'
+import { headerController } from './controllers/headerController.js'
 import { navController } from './controllers/navController.js'
-import { renderFooter } from './views/partials/footerView.js'
+import { footerController } from './controllers/footerController.js'
 import { initRouter } from './router/router.js'
 import { renderIcons } from './utils/icons.js'
 import renderHomePage from './views/pages/homeView.js'
 
 const initApp = () => {
-  renderHeader()
+  headerController()
   navController()
-  renderFooter()
+  footerController()
   initRouter()
   renderIcons()
 }

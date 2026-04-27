@@ -110,7 +110,7 @@
 
   /* List card */
   .product-list-card {
-    @apply h-64 md:flex-row md:rounded-none;
+    @apply md:flex-row md:rounded-none;
   }
 
   /* Image wrapper */
@@ -129,7 +129,7 @@
   }
 
   .product-list-card .card-caption {
-    @apply h-full flex-row gap-5;
+    @apply h-full gap-5 md:flex-row;
   }
 
   .description-review-container {

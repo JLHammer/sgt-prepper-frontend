@@ -1,7 +1,7 @@
-// Clear main content
-export const clearMain = () => {
-  const app = document.querySelector('#root')
-  app.innerHTML = ''
+export const render = (targetId, htmlElement, clearTarget = false) => {
+  const el = document.getElementById(targetId)
+  if (clearTarget) el.innerHTML = ''
+  el.append(htmlElement)
 }
 
 // Format price in DKK

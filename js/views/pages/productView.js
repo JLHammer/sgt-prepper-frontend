@@ -4,7 +4,7 @@ import { createIcon } from '../../utils/icons.js'
 import { Card } from '../components/molecules/card.js'
 
 const renderProductPage = (product) => {
-  const root = get('#root')
+  console.log(product)
   const productPageContainer = Section('product-page-container main-container')
   const { categorySlug } = product
   const backButton = Button(
@@ -26,7 +26,7 @@ const renderProductPage = (product) => {
   const productCard = Card(product)
   set([backButton, h1, productCard], productPageContainer)
 
-  set(productPageContainer, root)
+  return productPageContainer
 }
 
 export default renderProductPage

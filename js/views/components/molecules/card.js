@@ -9,7 +9,7 @@ export const Card = (props) => {
   const figcaption = Figcaption(name, 'card-caption')
   const teaserParagraph = Paragraph(teaser, 'text-gray-600')
   const priceParagraph = Paragraph(
-    `Pris: ${price} DKK`,
+    `Pris: ${price}`,
     'text-2xl font-bold text-gray-800',
   )
   const stockParagraph = Paragraph(

@@ -17,7 +17,7 @@ export const ListCard = ({ name, imageUrl, teaser, price, stock, slug }) => {
     'product-stock',
   )
   const priceParagraph = Paragraph(
-    `Pris: ${price} DKK`,
+    `Pris: ${price}`,
     'product-price font-bold',
     'product-price',
   )

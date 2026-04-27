@@ -1,5 +1,8 @@
 import { create } from '../../../utils/dom.js'
 
+// Fragment atom
+export const createFragment = () => document.createDocumentFragment()
+
 // Paragraph Atom
 export const Paragraph = (innerText, className = '') => {
   const paragraph = create('p', className)

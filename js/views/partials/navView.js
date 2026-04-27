@@ -1,5 +1,5 @@
 import { create, get, set } from '../../utils/dom.js'
-import { Li, Ul, Link } from '../components/atoms/index.js'
+import { Li, Ul, Link, createFragment } from '../components/atoms/index.js'
 import { createIcon } from '../../utils/icons.js'
 
 const CATEGORY_ICON_BY_SLUG = {
@@ -15,9 +15,8 @@ const getCategoryIconName = (item) => {
   return CATEGORY_ICON_BY_SLUG[slug] || 'Package'
 }
 
-const renderNav = async (data) => {
-  const nav = get('#nav')
-  nav.innerHTML = ''
+const createNav = async (data) => {
+  const nav = createFragment()
 
   const mobileWrapper = create('div', 'relative inline-block md:hidden')
 
@@ -106,6 +105,8 @@ const renderNav = async (data) => {
   set(toggleButton, mobileWrapper)
   set(mobileMenu, mobileWrapper)
   set([mobileWrapper, desktopMenu], nav)
+
+  return nav
 }
 
-export default renderNav
+export default createNav

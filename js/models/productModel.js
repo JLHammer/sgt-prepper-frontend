@@ -53,13 +53,15 @@ export const getAllProducts = async () => {
 }
 
 // Get a single product by category and product slug
-export const getProduct = async (category, product) => {
-  if (!category || !product) {
-    throw new Error('Missing category or product slug')
+export const getProduct = async (product) => {
+  if (!product) {
+    throw new Error('Missing product slug')
   }
 
   try {
-    const data = await request(`${url}/${category}/${product}`)
+    const data = await request(`${url}/bySlug/${product}`)
+    console.log(`${url}/${product}`)
+
     return normalizeImageUrl(data)
   } catch (error) {
     throw new Error('Request error on product', { cause: error })
