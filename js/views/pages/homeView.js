@@ -44,8 +44,8 @@ const renderHomePage = (products = []) => {
 
   products.forEach((product) => {
     const card = ListCard(product)
-    const productHref = product.categorySlug
-      ? `/index.html#/produkt/${product.categorySlug}/${product.slug}`
+    const productHref = product.category?.slug
+      ? `/index.html#/produkter/${product.category.slug}/${product.slug}`
       : '/index.html#/produkter'
     const productLink = Link(productHref, '', 'block')
 

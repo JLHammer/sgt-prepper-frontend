@@ -1,16 +1,16 @@
+// Render an HTML element into a target element by ID, with an option to clear the target first
 export const render = (targetId, htmlElement, clearTarget = false) => {
   const el = document.getElementById(targetId)
   if (clearTarget) el.innerHTML = ''
   el.append(htmlElement)
 }
 
-// Format price in DKK
-export const price2Dkk = (value) => {
-  return new Intl.NumberFormat('da-DK', {
-    style: 'currency',
-    currency: 'DKK',
-    currencyDisplay: 'code',
-  }).format(value)
+// Clear the content of an element
+export const clearElement = (targetId) => {
+  const el = document.querySelector(`#${targetId}`)
+  if (el) {
+    el.innerHTML = ''
+  }
 }
 
 // Create an element with classes

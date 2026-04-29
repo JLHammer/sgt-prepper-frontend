@@ -9,8 +9,9 @@ import {
 } from '../components/atoms/index.js'
 import { ListCard } from '../components/molecules/listCard.js'
 
-const renderProductsPage = (products, categorySlug) => {
+const renderProductsPage = (products, categorySlug, title = 'Produkter') => {
   const el = createFragment()
+  // const view = createMainWrapper(title)
 
   const productsPageContainer = Section(
     'products-page-container main-container',

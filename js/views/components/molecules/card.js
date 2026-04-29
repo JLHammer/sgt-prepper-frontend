@@ -1,11 +1,13 @@
 import { set } from '../../../utils/dom.js'
 import { Figure, Figcaption, Img, Div, Paragraph } from '../atoms/index.js'
+import { normalizeImageUrl } from '../../../utils/imageUrlNormalizer.js'
 
 export const Card = (props) => {
   const { name, imageUrl, teaser, price, stock, slug } = props
   const card = Figure('card product-detail-card')
   const imgWrapper = Div('card-image-wrapper')
-  const img = Img(imageUrl, name, 'card-image')
+  const normalizedImgUrl = normalizeImageUrl(imageUrl)
+  const img = Img(normalizedImgUrl, name, 'card-image')
   const figcaption = Figcaption(name, 'card-caption')
   const teaserParagraph = Paragraph(teaser, 'text-gray-600')
   const priceParagraph = Paragraph(

@@ -15,8 +15,20 @@ export const createHeader = () => {
 
   const logo = Img('/images/logo.svg', 'Sgt. Prepper logo')
   const h1 = Heading(1, 'Sgt. Prepper', 'heading-1')
-  const loginButton = Button('Log ind', 'login-button', () => {})
-  const cartWrapper = Button('', 'cart-button', () => {})
+  const loginButton = Button({
+    text: 'Log ind',
+    type: 'button',
+    event: 'click',
+    func: () => {},
+    className: 'login-button',
+  })
+  const cartWrapper = Button({
+    text: '',
+    type: 'button',
+    event: 'click',
+    func: () => {},
+    className: 'cart-button',
+  })
   const cartIcon = Img('/images/cart.svg', 'Cart')
 
   const cartCountWrapper = Div('cart-count')

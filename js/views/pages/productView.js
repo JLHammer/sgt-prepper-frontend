@@ -4,18 +4,19 @@ import { createIcon } from '../../utils/icons.js'
 import { Card } from '../components/molecules/card.js'
 
 const renderProductPage = (product) => {
-  console.log(product)
   const productPageContainer = Section('product-page-container main-container')
-  const { categorySlug } = product
-  const backButton = Button(
-    '',
-    'inline-flex aspect-square items-center self-start rounded-xl bg-white p-2 shadow-md',
-    () => {
+  const categorySlug = product.category?.slug
+  const backButton = Button({
+    text: '',
+    type: 'button',
+    event: 'click',
+    func: () => {
       window.location.hash = categorySlug
         ? `#/produkter/${categorySlug}/`
         : '#/produkter/'
     },
-  )
+    className: 'inline-flex aspect-square items-center self-start rounded-xl bg-white p-2 shadow-md',
+  })
   const backArrowIcon = createIcon('ChevronLeft', 'text-black')
 
   const { name } = product

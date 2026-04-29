@@ -1,9 +1,9 @@
-import { getAllProducts } from '../models/productModel.js'
+import { getLatestProducts } from './productController.js'
 import renderHomePage from '../views/pages/homeView.js'
 
 async function homeController() {
-
-  renderHomePage()
+  const latestProducts = await getLatestProducts()
+  renderHomePage(latestProducts)
 }
 
 export default homeController

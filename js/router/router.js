@@ -1,12 +1,12 @@
 import homeController from '../controllers/homeController.js'
 import { checkoutController } from '../controllers/checkoutController.js'
 import { cartController } from '../controllers/cartController.js'
-import { loginController } from '../controllers/loginController.js'
+// import { loginController } from '../controllers/loginController.js'
 import {
   productDetails,
   ProductList,
 } from '../controllers/productController.js'
-import { create, get, set } from '../utils/dom.js'
+import { clearElement, create, get, set } from '../utils/dom.js'
 import { renderIcons } from '../utils/icons.js'
 
 // Initialize router
@@ -17,13 +17,15 @@ export function initRouter() {
 
 // Routing
 async function handleRoute() {
+  clearElement('root')
+
   const hash = window.location.hash || '#/'
   const cleanHash = hash.replace(/^#\/?/, '')
   const segments = cleanHash.split('/').filter(Boolean)
 
   // Route for login page
   if (segments[0] === 'login') {
-    loginController()
+    // loginController()
     renderIcons()
     return
   }
@@ -44,9 +46,14 @@ async function handleRoute() {
     }
   }
 
+  if (segments[0] === 'login') {
+    // loginController()
+    renderIcons()
+    return
+  }
+
   // Route for product detail page
   if (segments[0] === 'produkter' && segments.length === 3) {
-    console.log(segments)
     await productDetails(segments[2], segments[1])
     renderIcons()
     return

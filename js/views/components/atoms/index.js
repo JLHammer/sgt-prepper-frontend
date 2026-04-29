@@ -72,15 +72,6 @@ export const Img = (src = '', alt = '', className = '') => {
   return image
 }
 
-// Button atom
-export const Button = (text = '', className = '', onClick, type = 'button') => {
-  const button = create('button', className)
-  button.innerText = text
-  button.type = type
-  if (onClick) button.addEventListener('click', onClick)
-  return button
-}
-
 // Figure atom
 export const Figure = (className = '') => {
   const figure = create('figure', className)
@@ -94,27 +85,48 @@ export const Figcaption = (className = '') => {
 }
 
 // Form atom
-export const Form = (className = '', onSubmit) => {
+export const Form = (method = 'GET', className = '') => {
   const form = create('form', className)
-  if (onSubmit) form.addEventListener('submit', onSubmit)
+  form.method = method
   return form
 }
 
 // Input atom
-export const Input = (type = 'text', name = '', value = '', className = '') => {
+export const Input = (type, name, placeholder, value = '', className = '') => {
   const input = create('input', className)
   input.type = type
   input.name = name
+  input.placeholder = placeholder || ''
   input.value = value
   return input
 }
 
 // Label atom
-export const Label = (innerText = '', htmlFor = '', className = '') => {
+export const Label = (text = '', id, className = '') => {
   const label = create('label', className)
-  label.innerText = innerText
-  label.htmlFor = htmlFor
+  label.innerText = text
+  label.htmlFor = id
   return label
+}
+
+// Button atom
+export const Button = ({
+  text = '',
+  type = 'button',
+  event,
+  func,
+  className = '',
+} = {}) => {
+  if (event && typeof func !== 'function') {
+    throw new Error(
+      `Button: 'func' must be a function when 'event' is provided`,
+    )
+  }
+  const button = create('button', className)
+  button.innerText = text
+  button.type = type
+  if (event && func) button.addEventListener(event, func)
+  return button
 }
 
 // Hr atom
