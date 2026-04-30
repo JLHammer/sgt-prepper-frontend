@@ -60,10 +60,14 @@
   }
 
   #footer {
-    @apply mt-10 w-full;
+    @apply mt-10 w-full text-white;
+
+    & .footer-image {
+      @apply block h-auto w-full;
+    }
 
     & .address-container {
-      @apply flex flex-col bg-[#334156] not-italic;
+      @apply flex flex-col bg-slate-700 not-italic;
     }
   }
 
@@ -142,14 +146,6 @@
 
   .stock-price-container {
     @apply flex flex-col justify-end;
-  }
-
-  /* FOOTER */
-  .footer-image {
-    @apply block h-auto w-full;
-  }
-
-  .address-container {
   }
 }
 

@@ -8,6 +8,7 @@ import {
 } from '../controllers/productController.js'
 import { clearElement, create, get, set } from '../utils/dom.js'
 import { renderIcons } from '../utils/icons.js'
+import { loginController } from '../controllers/loginController.js'
 
 // Initialize router
 export function initRouter() {
@@ -25,7 +26,7 @@ async function handleRoute() {
 
   // Route for login page
   if (segments[0] === 'login') {
-    // loginController()
+    loginController()
     renderIcons()
     return
   }
@@ -44,12 +45,6 @@ async function handleRoute() {
       renderIcons()
       return
     }
-  }
-
-  if (segments[0] === 'login') {
-    // loginController()
-    renderIcons()
-    return
   }
 
   // Route for product detail page

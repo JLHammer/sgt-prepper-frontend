@@ -12,7 +12,7 @@ import { getToken, clearToken, isTokenExpired } from './token.js'
 export function logout() {
   clearToken()
   if (!window.location.pathname.includes('/login')) {
-    window.location.href = '/index.htm#/login'
+    window.location.href = '/index.html#/login'
   }
 }
 
@@ -45,6 +45,7 @@ export async function isLoggedIn() {
   try {
     // Valider tokenet mod serveren
     const response = await Authorize()
+    console.log('Authorize response:', response) // Add this
 
     // Behandl et falsy svar som en autorisationsfejl
     if (!response) {
@@ -53,8 +54,8 @@ export async function isLoggedIn() {
     }
 
     return true
-  } catch {
-    // Fejl stille ved netværks- eller uventede fejl — brugeren logges ikke ud
+  } catch (error) {
+    console.log('Authorize threw:', error)
     return false
   }
 }

@@ -4,10 +4,9 @@ import { navController } from './controllers/navController.js'
 import { footerController } from './controllers/footerController.js'
 import { initRouter } from './router/router.js'
 import { renderIcons } from './utils/icons.js'
-import renderHomePage from './views/pages/homeView.js'
 
-const initApp = () => {
-  headerController()
+const initApp = async () => {
+  await headerController()
   navController()
   footerController()
   initRouter()

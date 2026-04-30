@@ -2,26 +2,19 @@ import { get, set } from '../../utils/dom.js'
 import {
   Img,
   Heading,
-  Button,
   Div,
   Span,
   createFragment,
+  Button,
 } from '../components/atoms/index.js'
 
 const count = '0' // PLACEHOLDER - Should be based on actual cart content
 
-export const createHeader = () => {
+export const createHeader = (loginBtn) => {
   const header = createFragment()
 
   const logo = Img('/images/logo.svg', 'Sgt. Prepper logo')
   const h1 = Heading(1, 'Sgt. Prepper', 'heading-1')
-  const loginButton = Button({
-    text: 'Log ind',
-    type: 'button',
-    event: 'click',
-    func: () => {},
-    className: 'login-button',
-  })
   const cartWrapper = Button({
     text: '',
     type: 'button',
@@ -35,11 +28,19 @@ export const createHeader = () => {
   const cartCount = Span(`${count}`, 'w-full text-xs text-white')
   set(cartCount, cartCountWrapper)
 
-  const logoContainer = Div('logo-container')
+  const logoContainer = Button({
+    text: '',
+    type: 'button',
+    event: 'click',
+    func: () => {
+      window.location.href = '/index.html'
+    },
+    className: 'logo-container',
+  })
   set([logo, h1], logoContainer)
 
   const cartLoginContainer = Div('cart-login-container')
-  set([loginButton, cartWrapper], cartLoginContainer)
+  set([loginBtn, cartWrapper], cartLoginContainer)
 
   set([cartIcon, cartCountWrapper], cartWrapper)
   set([logoContainer, cartLoginContainer], header)

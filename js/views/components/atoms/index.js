@@ -92,12 +92,21 @@ export const Form = (method = 'GET', className = '') => {
 }
 
 // Input atom
-export const Input = (type, name, placeholder, value = '', className = '') => {
+export const Input = (
+  type,
+  name,
+  placeholder,
+  value = '',
+  autocomplete = 'on',
+  className = '',
+) => {
   const input = create('input', className)
   input.type = type
   input.name = name
+  input.id = name
   input.placeholder = placeholder || ''
   input.value = value
+  input.autocomplete = autocomplete
   return input
 }
 

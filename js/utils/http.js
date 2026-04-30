@@ -11,7 +11,7 @@ export const request = async (url = undefined, method = 'GET', body = {}) => {
     clearToken()
     // Send til login-siden hvis ikke allerede der
     if (!window.location.pathname.includes('login')) {
-      window.location.href = '/index.htm#/login'
+      window.location.href = '/index.html#/login'
     }
     throw new Error('Token expired')
   }
@@ -41,7 +41,7 @@ export const request = async (url = undefined, method = 'GET', body = {}) => {
     if (response.status === 401) {
       clearToken()
       if (!window.location.pathname.includes('login')) {
-        window.location.href = '/index.htm#/login'
+        window.location.href = '/index.html#/login'
       }
       throw new Error('Unauthorized - please login again')
     }
