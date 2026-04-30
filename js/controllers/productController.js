@@ -1,3 +1,4 @@
+import { isLoggedIn } from '../utils/auth.js'
 import {
   getProductDetails,
   getCategoryProducts,
@@ -7,6 +8,9 @@ import { render } from '../utils/dom.js'
 import { price2Dkk } from '../utils/formatters.js'
 import renderProductsPage from '../views/pages/productsView.js'
 import renderProductPage from '../views/pages/productView.js'
+import { formAddToCart } from '../views/components/molecules/formAddToCart.js'
+import { addProductToCart } from '../models/cartModel.js'
+import { updateCartCount } from './headerController.js'
 
 /**
  * Gets all products by category slug
@@ -34,9 +38,13 @@ export const ProductList = async (category_slug) => {
 
 export const productDetails = async (product_slug, category_slug) => {
   const data = await getProductDetails(product_slug)
+
+  const formElement = await buildProductForm(data.id)
+
   const formattedData = {
     ...data,
     price: price2Dkk(data.price),
+    formElement: formElement,
     categorySlug: category_slug,
   }
   const productHtml = renderProductPage(formattedData)
@@ -57,4 +65,26 @@ export const getLatestProducts = async () => {
   renderProductsPage(sliced, '', 'Seneste nyt')
 
   return sliced
+}
+
+export const buildProductForm = async (productId) => {
+  if (await isLoggedIn()) {
+    const form = formAddToCart(productId, addToCart)
+    const input = form.quantity
+    const button = form.querySelector('button')
+    button.disabled = !input.value || Number(input.value) < 1
+    input.addEventListener('input', () => {
+      button.disabled = !input.value || Number(input.value) < 1
+    })
+    return form
+  } else {
+    console.log('You are NOT logged in')
+  }
+}
+
+export const addToCart = async (e) => {
+  const productId = Number(e.target.dataset.product_id)
+  const quantity = Number(e.target.form.quantity.value)
+  const result = await addProductToCart(productId, quantity)
+  if (result) await updateCartCount()
 }

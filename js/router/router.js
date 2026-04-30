@@ -1,35 +1,29 @@
 import homeController from '../controllers/homeController.js'
 import { checkoutController } from '../controllers/checkoutController.js'
 import { cartController } from '../controllers/cartController.js'
-// import { loginController } from '../controllers/loginController.js'
+import { loginController } from '../controllers/loginController.js'
 import {
   productDetails,
   ProductList,
 } from '../controllers/productController.js'
 import { clearElement, create, get, set } from '../utils/dom.js'
 import { renderIcons } from '../utils/icons.js'
-import { loginController } from '../controllers/loginController.js'
+import { updateCartCount } from '../controllers/headerController.js'
 
 // Initialize router
 export function initRouter() {
   window.addEventListener('hashchange', handleRoute)
-  window.addEventListener('load', handleRoute)
+  handleRoute()
 }
 
 // Routing
 async function handleRoute() {
   clearElement('root')
+  await updateCartCount()
 
   const hash = window.location.hash || '#/'
   const cleanHash = hash.replace(/^#\/?/, '')
   const segments = cleanHash.split('/').filter(Boolean)
-
-  // Route for login page
-  if (segments[0] === 'login') {
-    loginController()
-    renderIcons()
-    return
-  }
 
   // Route for home page
   if (segments.length === 0) {
@@ -38,13 +32,11 @@ async function handleRoute() {
     return
   }
 
-  // Route for category page
-  if (segments[0] === 'produkter') {
-    if (segments.length === 2) {
-      await ProductList(segments[1])
-      renderIcons()
-      return
-    }
+  // Route for login page
+  if (segments[0] === 'login') {
+    await loginController()
+    renderIcons()
+    return
   }
 
   // Route for product detail page
@@ -54,23 +46,23 @@ async function handleRoute() {
     return
   }
 
+  // Route for category page
+  if (segments[0] === 'produkter' && segments.length === 2) {
+    await ProductList(segments[1])
+    renderIcons()
+    return
+  }
+
   // Route for cart page
   if (segments[0] === 'cart') {
-    cartController()
+    await cartController()
     renderIcons()
     return
   }
 
   // Route for checkout page
   if (segments[0] === 'checkout') {
-    checkoutController()
-    renderIcons()
-    return
-  }
-
-  // Route alias for checkout page
-  if (segments[0] === 'bestilling') {
-    checkoutController()
+    await checkoutController()
     renderIcons()
     return
   }

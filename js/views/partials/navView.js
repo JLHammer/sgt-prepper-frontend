@@ -18,7 +18,7 @@ const getCategoryIconName = (item) => {
 const createNav = async (data) => {
   const nav = createFragment()
 
-  const mobileWrapper = create('div', 'relative inline-block md:hidden')
+  const mobileWrapper = create('div', 'mobile-wrapper')
 
   const toggleButton = create(
     'button',
@@ -32,12 +32,10 @@ const createNav = async (data) => {
   set(menuIcon, toggleButton)
   set(menuLabel, toggleButton)
 
-  const mobileMenu = Ul(
-    'absolute left-0 z-20 mt-2 hidden min-w-64 rounded border border-slate-300 bg-white p-2 shadow-lg',
-  )
+  const mobileMenu = Ul('mobile-menu hidden')
   mobileMenu.setAttribute('role', 'menu')
 
-  const desktopMenu = Ul('hidden md:flex md:items-center md:gap-6')
+  const desktopMenu = Ul('desktop-menu')
 
   data.map((item) => {
     const mobileLi = Li('', '')
@@ -46,7 +44,7 @@ const createNav = async (data) => {
     const mobileLink = Link(
       `/index.html#/produkter/${item.slug}`,
       '',
-      'flex items-center gap-2 rounded px-3 py-2 text-slate-700 hover:bg-slate-100',
+      'nav-link mobile-nav-link',
     )
     mobileLink.setAttribute('role', 'menuitem')
 
@@ -54,28 +52,42 @@ const createNav = async (data) => {
     const mobileText = create('span')
     mobileText.innerText = item.title
 
-    set(mobileIcon, mobileLink)
-    set(mobileText, mobileLink)
-
-    set(mobileLink, mobileLi)
-    set(mobileLi, mobileMenu)
-
     const desktopLi = Li('', '')
     const desktopLink = Link(
       `/index.html#/produkter/${item.slug}`,
       '',
-      'flex items-center gap-2',
+      'nav-link desktop-nav-link',
     )
 
     const desktopIcon = createIcon(getCategoryIconName(item))
     const desktopText = create('span')
     desktopText.innerText = item.title
 
+    const currentHash = window.location.hash
+    if (currentHash.includes(item.slug)) {
+      mobileLink.classList.add('active')
+      desktopLink.classList.add('active')
+    }
+
+    set(mobileIcon, mobileLink)
+    set(mobileText, mobileLink)
+    set(mobileLink, mobileLi)
+    set(mobileLi, mobileMenu)
+
     set(desktopIcon, desktopLink)
     set(desktopText, desktopLink)
-
     set(desktopLink, desktopLi)
     set(desktopLi, desktopMenu)
+  })
+
+  window.addEventListener('hashchange', () => {
+    const newHash = window.location.hash
+    document.querySelectorAll('#nav a').forEach((link) => {
+      link.classList.remove('active')
+      if (newHash.includes(link.getAttribute('href').split('#/')[1])) {
+        link.classList.add('active')
+      }
+    })
   })
 
   const closeMenu = () => {

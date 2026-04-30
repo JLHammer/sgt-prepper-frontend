@@ -7,8 +7,8 @@ import { renderIcons } from './utils/icons.js'
 
 const initApp = async () => {
   await headerController()
-  navController()
-  footerController()
+  await navController()
+  await footerController()
   initRouter()
   renderIcons()
 }

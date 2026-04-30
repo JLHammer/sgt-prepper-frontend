@@ -45,7 +45,6 @@ export async function isLoggedIn() {
   try {
     // Valider tokenet mod serveren
     const response = await Authorize()
-    console.log('Authorize response:', response) // Add this
 
     // Behandl et falsy svar som en autorisationsfejl
     if (!response) {

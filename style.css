@@ -52,7 +52,52 @@
   }
 
   #nav {
-    @apply flex gap-2 bg-slate-400 p-3;
+    @apply flex min-h-15 gap-2 bg-slate-400 p-3;
+
+    & .mobile-wrapper {
+      @apply relative inline-block md:hidden self-center;
+    }
+
+    & .nav-link {
+      @apply flex items-center gap-2;
+    }
+
+    & .mobile-menu {
+      @apply absolute left-0 z-20 mt-2 min-w-64 rounded border border-slate-300 bg-white p-2 shadow-lg;
+
+      & .mobile-nav-link {
+        @apply px-3 py-2 text-slate-700 hover:bg-slate-100;
+
+        &.active {
+          @apply rounded-none bg-slate-100;
+
+          &:hover {
+            @apply border-slate-100;
+          }
+        }
+      }
+    }
+
+    & .desktop-menu {
+      @apply hidden md:flex md:items-center md:gap-6;
+
+      & .desktop-nav-link {
+        @apply text-white transition-colors duration-200 hover:text-slate-700;
+
+        &.active {
+          &:hover {
+          }
+        }
+      }
+    }
+
+    & .active {
+      @apply rounded-full border border-white px-2.5 py-1.5 transition-all duration-200;
+
+      &:hover {
+        @apply border-slate-700 text-slate-700;
+      }
+    }
   }
 
   #root {
@@ -75,7 +120,7 @@
     @apply hidden h-full text-2xl font-bold md:flex;
   }
 
-  .logo-container {
+  .logo-link {
     @apply flex h-full items-center justify-center gap-2;
   }
 
@@ -83,16 +128,36 @@
     @apply rounded-full bg-login-button px-3;
   }
 
-  .cart-login-container {
+  .login-cart-container {
     @apply flex gap-3;
   }
 
-  .cart-button {
+  .cart-link {
     @apply relative px-2;
   }
 
+  .cart-count-wrapper {
+    @apply absolute -top-1 -left-1 hidden h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white;
+  }
+
   .cart-count {
-    @apply absolute -top-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white;
+    @apply text-white;
+  }
+
+  .cart-empty {
+    @apply w-2/3 text-center text-balance;
+  }
+
+  .cart-list {
+    @apply flex flex-col gap-5;
+  }
+
+  .cart-item {
+    @apply flex flex-col gap-1;
+  }
+
+  .cart-list:has(.cart-empty) {
+    @apply flex items-center justify-center;
   }
 
   .main-container {
@@ -103,50 +168,84 @@
     @apply h-38 w-full object-cover md:h-full;
   }
 
+  /* Products */
+  .products-page-container {
+    @apply gap-2;
+  }
+
   .products-container {
     @apply flex flex-col gap-4 shadow-none sm:w-9/10 md:gap-0 md:shadow-xl lg:w-fit lg:items-center;
   }
 
+  /* Product */
+  .product-container {
+    @apply flex flex-col items-center;
+  }
+
   /* CARDS */
+  /* General styling */
   .card {
     @apply flex w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white p-6 text-black shadow-lg sm:gap-6 md:shadow-none;
+
+    & .card-image-wrapper {
+      @apply flex aspect-square w-full items-center sm:w-auto;
+
+      & .card-image {
+        @apply aspect-square h-auto w-full rounded-lg object-cover sm:w-auto md:h-48;
+      }
+    }
+
+    & .card-caption {
+      @apply flex h-full w-full flex-col gap-4 text-xl;
+
+      & .description-review-container {
+        @apply flex flex-col;
+
+        & .product-name {
+        }
+
+        & .product-teaser {
+          @apply text-gray-600;
+        }
+      }
+
+      & .stock-price-container {
+        @apply flex flex-col justify-end;
+
+        & .product-in-stock {
+          @apply text-green-600;
+        }
+
+        & .product-out-of-stock {
+          @apply text-red-600;
+        }
+
+        & .product-price {
+          @apply font-bold;
+        }
+      }
+    }
   }
 
-  /* Product card */
-  .product-detail-card {
-  }
-
-  /* List card */
+  /* Products card specific */
   .product-list-card {
     @apply md:flex-row md:rounded-none;
+
+    & .card-caption {
+      @apply h-full gap-5 md:flex-row;
+    }
   }
 
-  /* Image wrapper */
-  .card-image-wrapper {
-    @apply flex w-full items-center sm:w-auto;
+  /* Product card specific */
+  .product-detail-card {
+    & .product-name {
+      @apply hidden;
+    }
   }
+}
 
-  /* Image */
-  .card-image {
-    @apply aspect-square h-auto w-full rounded-lg object-cover sm:w-auto md:h-48;
-  }
-
-  /* Figcaption */
-  .card-caption {
-    @apply flex h-full w-fit flex-1 flex-col gap-4 text-xl;
-  }
-
-  .product-list-card .card-caption {
-    @apply h-full gap-5 md:flex-row;
-  }
-
-  .description-review-container {
-    @apply flex flex-col;
-  }
-
-  .stock-price-container {
-    @apply flex flex-col justify-end;
-  }
+.add-to-cart-button {
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
 }
 
 @layer utilities {

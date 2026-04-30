@@ -26,6 +26,8 @@ export const get = (target) => document.querySelector(target)
 // Set one or more elements in the DOM
 export const set = (element, target) => {
   if (Array.isArray(element)) {
-    element.forEach((el) => target.appendChild(el))
-  } else target.appendChild(element)
+    element.forEach((el) => {
+      if (el) target.appendChild(el)
+    })
+  } else if (element) target.appendChild(element)
 }

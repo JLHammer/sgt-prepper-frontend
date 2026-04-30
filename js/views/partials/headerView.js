@@ -1,4 +1,4 @@
-import { get, set } from '../../utils/dom.js'
+import { set } from '../../utils/dom.js'
 import {
   Img,
   Heading,
@@ -6,43 +6,29 @@ import {
   Span,
   createFragment,
   Button,
+  Link,
 } from '../components/atoms/index.js'
 
-const count = '0' // PLACEHOLDER - Should be based on actual cart content
+const count = '0'
 
 export const createHeader = (loginBtn) => {
   const header = createFragment()
 
   const logo = Img('/images/logo.svg', 'Sgt. Prepper logo')
   const h1 = Heading(1, 'Sgt. Prepper', 'heading-1')
-  const cartWrapper = Button({
-    text: '',
-    type: 'button',
-    event: 'click',
-    func: () => {},
-    className: 'cart-button',
-  })
+  const cartWrapper = Link('/index.html#/cart', '', 'cart-link')
   const cartIcon = Img('/images/cart.svg', 'Cart')
+  const cartCountWrapper = Div('cart-count-wrapper')
+  const cartCount = Span(`${count}`, 'cart-count')
 
-  const cartCountWrapper = Div('cart-count')
-  const cartCount = Span(`${count}`, 'w-full text-xs text-white')
+  const logoContainer = Link('/index.html', '', 'logo-link')
+
+  const cartLoginContainer = Div('login-cart-container')
+
   set(cartCount, cartCountWrapper)
-
-  const logoContainer = Button({
-    text: '',
-    type: 'button',
-    event: 'click',
-    func: () => {
-      window.location.href = '/index.html'
-    },
-    className: 'logo-container',
-  })
-  set([logo, h1], logoContainer)
-
-  const cartLoginContainer = Div('cart-login-container')
-  set([loginBtn, cartWrapper], cartLoginContainer)
-
   set([cartIcon, cartCountWrapper], cartWrapper)
+  set([logo, h1], logoContainer)
+  set([loginBtn, cartWrapper], cartLoginContainer)
   set([logoContainer, cartLoginContainer], header)
 
   return header

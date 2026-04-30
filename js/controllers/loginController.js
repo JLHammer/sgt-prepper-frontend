@@ -7,22 +7,21 @@ import renderLoginPage from '../views/pages/loginView.js'
 export const loginController = () => {
   renderLoginPage(handleLogin)
 }
+
 export const handleLogin = async (e) => {
   e.preventDefault()
   const form = e.currentTarget
   const username = form.username.value.trim()
   const password = form.password.value
-  console.log('Attempting login with:', username)
   try {
     const data = await Authenticate(username, password)
-    console.log('Authenticate returned:', data)
     setCookie('sgtprepper_token', JSON.stringify(data))
-    console.log('Cookie after set:', document.cookie)
     location.href = '/index.html'
   } catch (error) {
     console.error(`Login failed: ${error}`)
   }
 }
+
 export const renderLoginButton = async () => {
   const loggedIn = await isLoggedIn()
   const buttonText = loggedIn ? 'Log out' : 'Log in'

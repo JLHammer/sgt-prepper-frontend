@@ -26,9 +26,9 @@ const renderProductsPage = (products, categorySlug, title = 'Produkter') => {
 
     const card = ListCard({ name, imageUrl, teaser, price, stock, slug })
     const productHref = `/index.html#/produkter/${categorySlug}/${slug}`
-    const cardLink = Link(productHref, '', 'block')
-    set(card, cardLink)
-    set(cardLink, div)
+    const productLink = Link(productHref, '', 'product-link')
+    set(card, productLink)
+    set(productLink, div)
 
     if (index < products.length - 1) {
       const hr = Hr(
@@ -38,7 +38,6 @@ const renderProductsPage = (products, categorySlug, title = 'Produkter') => {
     }
   })
 
-  set(div, el)
   return el
 }
 
