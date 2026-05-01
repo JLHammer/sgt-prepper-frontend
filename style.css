@@ -55,7 +55,7 @@
     @apply flex min-h-15 gap-2 bg-slate-400 p-3;
 
     & .mobile-wrapper {
-      @apply relative inline-block md:hidden self-center;
+      @apply relative inline-block self-center md:hidden;
     }
 
     & .nav-link {
@@ -107,12 +107,20 @@
   #footer {
     @apply mt-10 w-full text-white;
 
+    & .footer-content {
+      @apply flex flex-col;
+    }
+
     & .footer-image {
       @apply block h-auto w-full;
     }
 
     & .address-container {
-      @apply flex flex-col bg-slate-700 not-italic;
+      @apply flex w-full flex-col not-italic;
+    }
+
+    & .footer-list {
+      @apply w-full bg-slate-700;
     }
   }
 

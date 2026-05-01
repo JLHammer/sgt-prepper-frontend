@@ -1,5 +1,5 @@
 import homeController from '../controllers/homeController.js'
-import { checkoutController } from '../controllers/checkoutController.js'
+import { orderController } from '../controllers/orderController.js'
 import { cartController } from '../controllers/cartController.js'
 import { loginController } from '../controllers/loginController.js'
 import {
@@ -9,6 +9,9 @@ import {
 import { clearElement, create, get, set } from '../utils/dom.js'
 import { renderIcons } from '../utils/icons.js'
 import { updateCartCount } from '../controllers/headerController.js'
+import { privacyPolicyController } from '../controllers/privacyPolicyController.js'
+import { cookieSettingsController } from '../controllers/cookieSettingsController.js'
+import { aboutUsController } from '../controllers/aboutUsController.js'
 
 // Initialize router
 export function initRouter() {
@@ -60,9 +63,37 @@ async function handleRoute() {
     return
   }
 
-  // Route for checkout page
-  if (segments[0] === 'checkout') {
-    await checkoutController()
+  // Route for order page
+  if (segments[0] === 'order') {
+    await orderController()
+    renderIcons()
+    return
+  }
+
+  // Route for privacy policy page
+  if (segments[0] === 'privacy-policy') {
+    await privacyPolicyController()
+    renderIcons()
+    return
+  }
+
+  // Terms of sale page
+  if (segments[0] === 'terms-of-service') {
+    // await termsOfSaleController()
+    renderIcons()
+    return
+  }
+
+  // Cookie settings page
+  if (segments[0] === 'cookie-settings') {
+    await cookieSettingsController()
+    renderIcons()
+    return
+  }
+
+  // About us page
+  if (segments[0] === 'about-us') {
+    await aboutUsController()
     renderIcons()
     return
   }
